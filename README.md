@@ -11,9 +11,9 @@ This package heavily relies upon [depcheck](https://www.npmjs.com/package/depche
 
 By default, it will not exclude any directories. Under most circumstances, you will want to pass in at least one directory (e.g. a tests directory) that includes code which uses `devDependencies`.
 
-Specifying directories to be excluded is done by passing in `-e` (or `--exclude`) with the directory to ignore. This argument can be passed in multiple times. For example:
+Specifying directories to be excluded is done by passing in `-e` (or `--exclude`) with the directory or directories to ignore. Pass in multiple directories as a comma separated list. For example:
 
-`dep-check -e tests -e scripts .`
+`dep-check -e tests,scripts .`
 
 ## Future Improvements
 This project is designed to remain very lightweight, but there are some future improvements that are needed.

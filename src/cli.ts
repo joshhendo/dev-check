@@ -3,7 +3,7 @@ import {checkProject, CheckProjectOptions} from "./index";
 
 void async function() {
   const optionDefinitions: args.OptionDefinition[] = [
-    { name: 'exclude', alias: 'e', type: String, multiple: true },
+    { name: 'exclude', alias: 'e', type: String, multiple: false },
     { name: 'directory', type: String, multiple: false, defaultOption: true }
   ];
 
@@ -14,8 +14,10 @@ void async function() {
     return 1;
   }
 
+  const directoriesToExclude = options.exclude ? options.exclude.split(',') : null;
+
   const checkOptions: CheckProjectOptions = {
-    ignoreDirs: options.exclude || null,
+    ignoreDirs: directoriesToExclude,
   };
 
   const depsUsedNotInstalled = await checkProject(options.directory, checkOptions);

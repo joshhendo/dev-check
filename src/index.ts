@@ -26,13 +26,7 @@ export interface CheckProjectOptions {
 async function getDependenciesUsed(directory: string, ignoreDirs: string[], ignoreMatches: string[]): Promise<string[]> {
   const depOptions: depcheck.Options = {
     ignoreBinPackage: true,
-    ignoreDirs: ignoreDirs || [
-      'sandbox',
-      'dist',
-      'bower_components',
-      'test',
-      'tests'
-    ] ,
+    ignoreDirs: ignoreDirs || [] ,
     ignoreMatches: ignoreMatches || [
       'grunt-*'
     ],

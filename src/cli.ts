@@ -23,7 +23,7 @@ void async function() {
   const depsUsedNotInstalled = await checkProject(options.directory, checkOptions);
 
   if (depsUsedNotInstalled.length > 0) {
-    console.log(`Dependencies used but not in prod dependencies: ${depsUsedNotInstalled.join(',')}`);
+    console.error(`Dependencies used but not in the dependencies list: ${depsUsedNotInstalled.join(',')}`);
     process.exit(1);
   }
 

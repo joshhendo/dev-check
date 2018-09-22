@@ -17,6 +17,10 @@ Specifying directories to be excluded is done by passing in `-e` (or `--exclude`
 
 Note: At the moment this only scans .js and .jsx files. This can still work if you're using a language that compiles to Javascript (e.g. Typescript), however you'll need to complete the compilation process first.
 
+## Designed for CI integration
+
+If it detects one or more packages that are used but not in the dependencies list, it will output an exit code of 1 (and print to strerr additional information), otherwise it will output an exit code of 0.
+
 ## Future Improvements
 This project is designed to remain very lightweight, but there are some future improvements that are needed.
   - Ability to specify file mask instead of excluding directories. This will allow projects where test files are mixed in with production code to use this tool

@@ -19,3 +19,6 @@ Specifying directories to be excluded is done by passing in `-e` (or `--exclude`
 This project is designed to remain very lightweight, but there are some future improvements that are needed.
   - Ability to specify file mask instead of excluding directories. This will allow projects where test files are mixed in with production code to use this tool
   - Ability to be able to check files based on an ignore file. For example, if you have a `.dockerignore` file, you may want to check that all the files that will be bundled with your Docker image will be
+
+## Other Checking
+This tool is deisnged to do one thing, and only one thing. If you want to do some more checking of your packages (e.g. find packages that are imported but not installed), check out the excellent [npm-check](https://www.npmjs.com/package/npm-check).

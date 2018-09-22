@@ -1,5 +1,5 @@
 {
-  "name": "dev-check",
+  "name": "npm-dev-check",
   "version": "0.0.1",
   "description": "A static analysis tool for NodeJS project to ensure that no dev dependency is imported by production code",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joshhendo/dev-check.git"
+    "url": "git+https://github.com/joshhendo/npm-dev-check.git"
   },
   "keywords": [
     "devDependencies",
@@ -21,9 +21,9 @@
   "author": "Josh Henderson (joshhendo@outlook.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/joshhendo/dev-check/issues"
+    "url": "https://github.com/joshhendo/npm-dev-check/issues"
   },
-  "homepage": "https://github.com/joshhendo/dev-check#readme",
+  "homepage": "https://github.com/joshhendo/npm-dev-check#readme",
   "dependencies": {
     "command-line-args": "^5.0.2",
     "depcheck": "^0.6.11",
@@ -40,6 +40,6 @@
     "typescript": "^3.0.3"
   },
   "bin": {
-    "dev-check": "bin/cli.js"
+    "npm-dev-check": "bin/cli.js"
   }
 }

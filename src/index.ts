@@ -3,6 +3,7 @@ import * as depcheck from 'depcheck';
 const readPkg = require('read-pkg');
 import * as _ from 'lodash';
 import {promisify} from 'es6-promisify';
+import * as path from 'path';
 
 const readDirPromise = promisify(fs.readdir);
 
@@ -55,14 +56,16 @@ async function getPackagesInstalled(directory: string): Promise<string[]> {
 }
 
 export async function checkProject(directory: string, opts?: CheckProjectOptions) {
+  const fullDirectory = path.resolve(directory);
+
   try {
-    await readDirPromise(directory);
+    await readDirPromise(fullDirectory);
   } catch (err) {
     throw new Error('Could not access specified directory: ' + err);
   }
 
-  const depUsed = await getDependenciesUsed(directory, opts.ignoreDirs, opts.ignoreMatches);
-  const depInstalled = await getPackagesInstalled(directory);
+  const depUsed = await getDependenciesUsed(fullDirectory, opts.ignoreDirs, opts.ignoreMatches);
+  const depInstalled = await getPackagesInstalled(fullDirectory);
 
   return _.difference(depUsed, depInstalled);
 }

@@ -15,6 +15,10 @@ Specifying directories to be excluded is done by passing in `-e` (or `--exclude`
 
 `npm-dev-check -e tests,scripts .`
 
+Matches can be ignored by passing in `-i` (or `--ignore`) with the glob to ignore. Pass in multiple globs as a comma separated list. For example:
+
+`npm-dev-check -i gulp-*`
+
 Note: At the moment this only scans .js and .jsx files. This can still work if you're using a language that compiles to Javascript (e.g. Typescript), however you'll need to complete the compilation process first.
 
 ## Designed for CI integration

@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as depcheck from 'depcheck';
+const depcheckcheck = require('depcheck/dist/check');
 const readPkg = require('read-pkg');
 import * as _ from 'lodash';
 import {promisify} from 'es6-promisify';

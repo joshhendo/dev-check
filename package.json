@@ -1,6 +1,6 @@
 {
   "name": "npm-dev-check",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A static analysis tool for NodeJS project to ensure that no dev dependency is imported by production code",
   "main": "index.js",
   "scripts": {

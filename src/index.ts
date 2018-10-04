@@ -5,6 +5,7 @@ const readPkg = require('read-pkg');
 import * as _ from 'lodash';
 import {promisify} from 'es6-promisify';
 import * as path from 'path';
+import * as minimatch from 'minimatch';
 
 const readDirPromise = promisify(fs.readdir);
 
@@ -29,9 +30,7 @@ async function getDependenciesUsed(directory: string, ignoreDirs: string[], igno
   const depOptions: depcheck.Options = {
     ignoreBinPackage: true,
     ignoreDirs: ignoreDirs || [] ,
-    ignoreMatches: ignoreMatches || [
-      'grunt-*'
-    ],
+    ignoreMatches: [],
     parsers: { // the target parsers
       '*.js': depcheck.parser.es6,
       '*.jsx': depcheck.parser.jsx
@@ -67,6 +66,16 @@ export async function checkProject(directory: string, opts?: CheckProjectOptions
 
   const depUsed = await getDependenciesUsed(fullDirectory, opts.ignoreDirs, opts.ignoreMatches);
   const depInstalled = await getPackagesInstalled(fullDirectory);
+
+  if (opts.ignoreMatches && opts.ignoreMatches.length > 0) {
+    for (const ignore of opts.ignoreMatches) {
+      const toRemove = minimatch.match(depUsed, ignore, {nonull: false});
+      if (toRemove && toRemove.length) {
+        _.pullAll(depUsed, toRemove);
+      }
+    }
+  }
+
 
   return _.difference(depUsed, depInstalled);
 }
